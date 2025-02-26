@@ -1,0 +1,6 @@
+streamlit
+dnspython
+requests
+disposable_email_domains
+email_validator
+closeio
