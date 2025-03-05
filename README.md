@@ -1,20 +1,46 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# Email Verifier App
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+## Overview
+The **Email Verifier App** is a simple tool built using Streamlit that allows users to verify multiple email addresses. It checks the validity of email addresses based on several criteria, including format correctness, disposable email detection, and the presence of an MX record for the domain.
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+## Features
+- **Bulk Email Verification**: Enter multiple email addresses at once.
+- **Email Format Validation**: Ensures the email follows a valid pattern.
+- **Disposable Email Detection**: Identifies if the email is from a temporary or disposable provider.
+- **MX Record Lookup**: Verifies whether the email domain has an MX record.
+- **Categorized Results**: Emails are categorized as Valid, Invalid, Catch-all, Disposable, or Error with colored labels.
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+## Installation
+### Prerequisites
+- Python 3.8+
+- pip
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+### Install Dependencies
+```sh
+pip install streamlit pandas emailverifier
+```
+
+## Usage
+Run the application with the following command:
+```sh
+streamlit run app.py
+```
+
+### Steps to Use
+1. Open the app in your browser.
+2. Enter email addresses in the text area, one per line.
+3. Click the **Verify Emails** button.
+4. View verification results in a table with categorized statuses.
+
+## Result Categories
+| Status      | Meaning |
+|------------|---------|
+| ✅ Valid   | The email is valid and can receive messages. |
+| ⚠️ Error   | There was an issue verifying the email. |
+| ⚠️ Catch-all | The domain accepts all emails, so validity cannot be determined. |
+| ⚠️ Disposable | The email is from a disposable provider. |
+| ❌ Invalid | The email format is incorrect or domain has no MX record. |
+
+## License
+This project is licensed under the MIT License.
+
