@@ -32,21 +32,18 @@ if st.button("Verify Emails"):
     for index, email in enumerate(emails, start=1):
         progress_bar.progress(index / len(emails))
         if email.strip():
-            diagnosis = validator.verify_email(email)
+            success, result = validator.email_validator(email)
             contacted = get_close_data(email)
-            if "Valid" in diagnosis:
-                result = "Valid"
-            elif "Error" in diagnosis:
-                result = "Error"
-            elif "Catch-all" in diagnosis:
-                result = "Catch-all"
-            elif "Disposable" in diagnosis:
-                result = "Disposable"
-            else:
-                result = "Invalid"
 
-            styled_result = get_result_style(result)
-            results.append((email, styled_result, diagnosis, contacted))
+            if success:
+                results.append(
+                    (
+                        email,
+                        get_result_style(result["Status"]),
+                        result["Diagnosis"],
+                        contacted,
+                    )
+                )
 
     df = pd.DataFrame(
         results, columns=["Email Address", "Result", "Diagnosis", "Contacted Date"]
